@@ -53,15 +53,6 @@
 			<Item label="Level 5"			value="5" />
 			<Item label="Max. Sound Level"	value="6" />
 		</Value>
-		<Value type="int" index="10" genre="config" label="Retrieve RFID Information" units="">
-			<Help>
-				Configuration Report for retriving the RFID information
-				Byte 1: Para1 (msb)
-				Byte 2: Para2
-				Byte 3: Para3
-				Byte 4: Para4 (lsb)
-			</Help>
-		</Value>
 		<Value type="list" index="5" genre="config" label="Door ReLock Mode" units="" min="0" max="1" value="1" size="1">
 			<Help>
 				Door ReLock Mode
@@ -74,7 +65,7 @@
 			<Help>
 				Service PIN Mode
 				A configuration get command on this parameter returns the latest set parameter value (set by Z-wave).
-				This is a set only value, if changed locally on keypad these values are not changed on Z-wave module. Value 5, 6 and 7 are for future use on door lock.
+				This is a set only value, if changed locally on keypad these values are not changed on Z-wave module. Value 5 and 6 are for future use on door lock.
 				Default Value: 0 (Deactivated)
 			</Help>
 			<Item label="Deactivated"				value="0" />
@@ -84,15 +75,30 @@
 			<Item label="10 times used"				value="4" />
 			<Item label="Not used (for future use)"	value="5" />
 			<Item label="Not used (for future use)"	value="6" />
-			<Item label="Not used (for future use)"	value="7" />
+			<Item label="Always Valid" 				value="7" />
 			<Item label="12 Hours used"				value="8" />
 			<Item label="24 Hours used"				value="9" />
+			<Item label="Disabled (disables Service Pin and Service Pin Menu on door lock)" value="FE" />
 		</Value>
 		<Value type="byte" index="7" genre="config" label="Door Lock Model Type" units="" min="101" max="150" value="150" read_only="true">
 			<Help>
 				Door Lock Model Type
 				This configuration is only accepted by configuration get command
 				It is a read only parameter. Default value depends on the door lock model type.
+			</Help>
+		</Value>
+				<Value type="list" genre="config" instance="1" index="9" label="Master Pin Unlock Mode" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="0">
+                <Help>Enables (On) or disables (Off) use of Master Pin to unlock door. Default value: 1)</Help>
+                <Item label="Off" value="0" />
+                <Item label="On" value="1" />
+            </Value>
+		<Value type="int" index="10" genre="config" label="Retrieve RFID Information" units="">
+			<Help>
+				Configuration Report for retriving the RFID information
+				Byte 1: Para1 (msb)
+				Byte 2: Para2
+				Byte 3: Para3
+				Byte 4: Para4 (lsb)
 			</Help>
 		</Value>
 	</CommandClass>
